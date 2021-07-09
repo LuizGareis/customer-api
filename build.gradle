@@ -48,6 +48,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jdbi/jdbi3-core
     implementation group: 'org.jdbi', name: 'jdbi3-core', version: '3.20.1'
 
+    // https://mvnrepository.com/artifact/org.jdbi/jdbi3-sqlobject
+    implementation group: 'org.jdbi', name: 'jdbi3-sqlobject', version: '3.20.1'
+
+
     // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
     implementation group: 'org.flywaydb', name: 'flyway-core', version: '7.11.0'
 
@@ -68,8 +72,7 @@ flyway {
     url = 'jdbc:mysql://127.0.0.1/customer?characterEncoding=latin1&useConfigs=maxPerformance'
     user = 'root'
     password = 'Pacifico123*'
-    locations = '/db/migration/'
-
+    schemas = ['customer']
 }
 
-build.dependsOn flyway
+flywayMigrate.dependsOn classes
